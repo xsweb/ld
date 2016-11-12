@@ -16,7 +16,7 @@
     eleArr=[select6.ele,select5.ele,select4.ele,select3.ele,select2.ele];
     //添加文本改变静态方法
     Select.change=function (len,obj,obj1,str,str1){
-        updateText(len);
+        Select.updateText(len);
         var childrens=this.children;
         obj.num=Select.getNum(childrens);
         obj1.text=(obj.text[obj.num])[str]||[];
@@ -40,6 +40,12 @@
             var newOption=document.createElement("option");
             newOption.innerHTML=arr[i][str];
             ele.appendChild(newOption);
+        }
+    }
+    //select提示内容更新
+    Select.updateText=function(n){
+        for(var i=0;i<n;i++){
+            eleArr[i].innerHTML='<option>'+textArr[i]+'</option>';
         }
     }
     //页面加载完成，请求数据，把省份一一添加到select中
@@ -79,12 +85,7 @@
         }
     }
     addHandler();
-    //select提示内容更新
-    function updateText(n){
-        for(var i=0;i<n;i++){
-            eleArr[i].innerHTML='<option>'+textArr[i]+'</option>';
-        }
-    }
+
 
 
 
